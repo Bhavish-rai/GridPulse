@@ -1,0 +1,23 @@
+
+{
+  "name": "gridpulse-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "parcel index.html --host 0.0.0.0",
+    "build": "parcel build index.html",
+    "clean": "rimraf .parcel-cache dist"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1",
+    "recharts": "^2.15.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "rimraf": "^6.0.1"
+  }
+}
