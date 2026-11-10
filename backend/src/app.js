@@ -10,6 +10,7 @@ import vehicleRoutes from "./routes/vehicle.routes.js";
 import stationDiscoveryRoutes from "./routes/station-discovery.routes.js";
 import stationRoutes from "./routes/station.routes.js";
 import bookingRoutes from "./routes/booking.routes.js";
+import sessionRoutes from "./routes/session.routes.js";
 
 const app = express();
 
@@ -37,11 +38,12 @@ app.use("/api/database", databaseRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);
 
-// Station discovery must come before general station routes.
+// Keep discovery before general station routes.
 app.use("/api/stations", stationDiscoveryRoutes);
 app.use("/api/stations", stationRoutes);
 
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/sessions", sessionRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
