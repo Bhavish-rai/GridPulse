@@ -1,4 +1,3 @@
-
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -10,6 +9,7 @@ import authRoutes from "./routes/auth.routes.js";
 import vehicleRoutes from "./routes/vehicle.routes.js";
 import stationDiscoveryRoutes from "./routes/station-discovery.routes.js";
 import stationRoutes from "./routes/station.routes.js";
+import bookingRoutes from "./routes/booking.routes.js";
 
 const app = express();
 
@@ -37,9 +37,11 @@ app.use("/api/database", databaseRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);
 
-// Register discovery before the general station routes.
+// Station discovery must come before general station routes.
 app.use("/api/stations", stationDiscoveryRoutes);
 app.use("/api/stations", stationRoutes);
+
+app.use("/api/bookings", bookingRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
