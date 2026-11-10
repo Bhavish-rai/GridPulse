@@ -8,6 +8,7 @@ import healthRoutes from "./routes/health.routes.js";
 import databaseRoutes from "./routes/database.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import vehicleRoutes from "./routes/vehicle.routes.js";
+import stationDiscoveryRoutes from "./routes/station-discovery.routes.js";
 import stationRoutes from "./routes/station.routes.js";
 
 const app = express();
@@ -35,6 +36,9 @@ app.use("/api/health", healthRoutes);
 app.use("/api/database", databaseRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);
+
+// Register discovery before the general station routes.
+app.use("/api/stations", stationDiscoveryRoutes);
 app.use("/api/stations", stationRoutes);
 
 app.use((req, res) => {
