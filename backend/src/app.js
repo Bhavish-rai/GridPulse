@@ -6,6 +6,8 @@ import morgan from "morgan";
 
 import healthRoutes from "./routes/health.routes.js";
 import databaseRoutes from "./routes/database.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import vehicleRoutes from "./routes/vehicle.routes.js";
 
 const app = express();
 
@@ -30,6 +32,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/health", healthRoutes);
 app.use("/api/database", databaseRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/vehicles", vehicleRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
